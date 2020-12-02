@@ -12,6 +12,7 @@ block content
             p.card-text= pet.description
             .text-right
                 a.card-link(href=`/pets/${pet._id}`) View #{pet.name}
+
   nav(aria-label='Page navigation example').d-flex.justify-content-center
     ul.pagination
       if currentPage > 1

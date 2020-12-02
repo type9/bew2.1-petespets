@@ -73,4 +73,18 @@ module.exports = (app) => {
         res.render('pets-index', { pets: results.docs, pagesCount: results.pages, currentPage: page });
       });
   });
+
+  // CREATE PET
+  app.post('/pets', (req, res) => {
+    var pet = new Pet(req.body);
+
+    pet.save()
+      .then((pet) => {
+        res.send({ pet: pet });
+      })
+      .catch((err) => {
+        // STATUS OF 400 FOR VALIDATIONS
+        res.status(400).send(err.errors);
+      }) ;
+  });
 }
